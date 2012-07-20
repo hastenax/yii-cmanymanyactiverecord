@@ -34,7 +34,7 @@ If Category has: 'posts'=>array(self::MANY_MANY, 'Post', 'tbl_post_category(cate
 
 Create tbl_post_category (category_id, post_id) table and then
 
-you can set reltions by (with erasing old ones)
+you can set relations by (with erasing old ones)
 
 	$model = Category::model()->findByPk(10);
 	$model->setRelationRecords('posts',array(1, 2, 3));
