@@ -34,7 +34,7 @@ If Category has: 'posts'=>array(self::MANY_MANY, 'Post', 'tbl_post_category(cate
 
 Create tbl_post_category (category_id, post_id) table and then
 
-you can set realtions by (with erasing old ones)
+you can set reltions by (with erasing old ones)
 
 	$model = Category::model()->findByPk(10);
 	$model->setRelationRecords('posts',array(1, 2, 3));
@@ -49,7 +49,7 @@ or you can add remove some relations
 	$model = Category::model()->findByPk(10);
 	$model->removeRelationRecords('posts',array(1,2,3));
 
-or if you need to save additional data in tbl_post_category (like user_id for example) you add realations with $additionalFields 
+or if you need to save additional data in tbl_post_category (like user_id for example) you add relations with $additionalFields 
 
 	$model = Category::model()->findByPk(10);
 	$model->addRelationRecords('posts',array(1, 2, 3), array('user_id' => Yii::app()->user->id));
