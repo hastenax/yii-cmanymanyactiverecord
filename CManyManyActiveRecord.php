@@ -2,9 +2,9 @@
 
 class CManyManyActiveRecord extends CActiveRecord
 {
-		/**
-		* @return array with table name and 2 keys of the related tables
-		*/
+	/**
+	* @return array with table name and 2 keys of the related tables
+	*/
         protected function verifyManyManyRelation($relation) {
             //check if relation correct
             if ($this->id < 1)
@@ -19,11 +19,11 @@ class CManyManyActiveRecord extends CActiveRecord
             return $matches;
         }
 
-		/**
-		* Create tables relation records on ManyMany relation with deletion old ones
-		* @param string $relationName the name of the relation, needs to be updated
-		* @param array  $relationData array of related keys of second table to be connected with first table
-		*/
+	/**
+	* Create tables relation records on ManyMany relation with deletion old ones
+	* @param string $relationName the name of the relation, needs to be updated
+	* @param array  $relationData array of related keys of second table to be connected with first table
+	*/
         public function setRelationRecords($relationName, $relationData)
         {
             //get correct relation from model relation defenition
@@ -58,11 +58,11 @@ class CManyManyActiveRecord extends CActiveRecord
             }
         }
 	
-		/**
-		* Create new tables relation records on ManyMany relation without deletion old ones
-		* @param string    $relationName the name of the relation, needs to be updated
-		* @param array	   $relationData array of related keys of second table to be connected with first table
-		*/
+	/**
+	* Create new tables relation records on ManyMany relation without deletion old ones
+	* @param string    $relationName the name of the relation, needs to be updated
+	* @param array	   $relationData array of related keys of second table to be connected with first table
+	*/
         public function addRelationRecords($relationName, $relationData, $additionalField = array())
         {
             //get correct relation from model relation defenition
@@ -107,10 +107,10 @@ class CManyManyActiveRecord extends CActiveRecord
         }
 
         /**
-		* Remove tables relation records on ManyMany relation
-		* @param string    $relationName the name of the relation, needs to be updated
-		* @param int	   $keys array of keys to remove
-		*/
+	* Remove tables relation records on ManyMany relation
+	* @param string    $relationName the name of the relation, needs to be updated
+	* @param int	   $keys array of keys to remove
+	*/
         public function removeRelationRecords($relationName, $keys)
         {
             //get correct relation from model relation defenition
