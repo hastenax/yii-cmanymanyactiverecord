@@ -44,9 +44,14 @@ or you can add new relations (without deletions of old ones)
 	$model = Category::model()->findByPk(10);
 	$model->addRelationRecords('posts',array(1, 2, 3));
 
-or you can add remove some raltions
+or you can add remove some relations
 
 	$model = Category::model()->findByPk(10);
 	$model->removeRelationRecords('posts',array(1,2,3));
+
+or if you need to save additional data in tbl_post_category (like user_id for example) you add realations with $additionalFields 
+
+	$model = Category::model()->findByPk(10);
+	$model->addRelationRecords('posts',array(1, 2, 3), array('user_id' => Yii::app()->user->id));
 
 Each of this method saves data to database, you don't need to save the model.

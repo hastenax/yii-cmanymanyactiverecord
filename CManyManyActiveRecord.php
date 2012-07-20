@@ -63,7 +63,7 @@ class CManyManyActiveRecord extends CActiveRecord
 	* @param string    $relationName the name of the relation, needs to be updated
 	* @param array	   $relationData array of related keys of second table to be connected with first table
 	*/
-        public function addRelationRecords($relationName, $relationData, $additionalField = array())
+        public function addRelationRecords($relationName, $relationData, $additionalFields = array())
         {
             //get correct relation from model relation defenition
             $relation = $this->getActiveRelation($relationName);
@@ -75,8 +75,8 @@ class CManyManyActiveRecord extends CActiveRecord
             $another_key = $matches[3][0];
 
             //execute insert new relations statement
-            if (count($additionalField) > 0) {
-		foreach($additionalField as $key=>$value) {
+            if (count($additionalFields) > 0) {
+		foreach($additionalFields as $key=>$value) {
 		    $keys[] = $key;
 		}
                 $insert_sql = "insert into {$table} ($this_key, $another_key, ".implode(',', $keys).") VALUES ";
@@ -88,8 +88,8 @@ class CManyManyActiveRecord extends CActiveRecord
             $sql = array();
             for ($i = 0; $i<$c; $i++)
             {
-                if (count($additionalField) > 0) {
-		    foreach($additionalField as $key=>$value) {
+                if (count($additionalFields) > 0) {
+		    foreach($additionalFields as $key=>$value) {
 			$values[] = $value;
 		    }
                     $sql[] = '('.$this->id.', '.$relationData[$i].", '".implode("', '", $values)."')";
