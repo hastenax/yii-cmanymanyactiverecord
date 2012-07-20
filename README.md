@@ -12,13 +12,18 @@ Installation
 ========================= 
 
 To use this extension:
+
 1) copy CManyManyActiveRecord to your components directory
+
 2) check that your config have autoloaded
+
 	'import'=>array(
 		...
 		'application.components.*',
 		...
+		
 3) Extend your model (which has MANY_MANY relation), category for example
+
 	class Category extends CManyManyActiveRecord
 	...
 
