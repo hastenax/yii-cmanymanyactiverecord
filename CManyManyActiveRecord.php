@@ -1,6 +1,6 @@
 <?php
 
-class CManyManyActiveRecord extends CActiveRecord
+class ManyManyActiveRecord extends CActiveRecord
 {
 	/**
 	* @return array with table name and 2 keys of the related tables
