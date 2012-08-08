@@ -1,7 +1,7 @@
-yii-cmanymanyactiverecord
+yii-manymanyactiverecord
 =========================
 
-The CManyManyActiveRecord YII extension class adds up functionality of saving MANY_MANY relation field value using simple arrays.
+The ManyManyActiveRecord YII extension class adds up functionality of saving MANY_MANY relation field value using simple arrays.
 
 Requirements 
 =========================
@@ -13,7 +13,7 @@ Installation
 
 To use this extension:
 
-1) copy CManyManyActiveRecord to your components directory
+1) copy ManyManyActiveRecord to your components directory
 
 2) check that your config have autoloaded
 
@@ -24,7 +24,7 @@ To use this extension:
 		
 3) Extend your model (which has MANY_MANY relation), category for example
 
-	class Category extends CManyManyActiveRecord
+	class Category extends ManyManyActiveRecord
 	...
 
 Usage
