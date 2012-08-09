@@ -22,7 +22,7 @@ To use this extension:
 		'application.components.*',
 		...
 		
-3) Extend your model (which has MANY_MANY relation), category for example
+3) extend your model (which has MANY_MANY relation), category for example
 
 	class Category extends ManyManyActiveRecord
 	...
@@ -30,7 +30,9 @@ To use this extension:
 Usage
 =========================
 
-If Category has: 'posts'=>array(self::MANY_MANY, 'Post', 'tbl_post_category(category_id, post_id)')
+If Category has: 
+
+	'posts'=>array(self::MANY_MANY, 'Post', 'tbl_post_category(category_id, post_id)')
 
 Create tbl_post_category (category_id, post_id) table and then
 
@@ -44,7 +46,7 @@ or you can add new relations (without deletions of old ones)
 	$model = Category::model()->findByPk(10);
 	$model->addRelationRecords('posts',array(1, 2, 3));
 
-or you can add remove some relations
+or you can remove some relations
 
 	$model = Category::model()->findByPk(10);
 	$model->removeRelationRecords('posts',array(1,2,3));
