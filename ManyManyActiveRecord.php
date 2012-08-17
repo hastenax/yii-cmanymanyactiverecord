@@ -10,8 +10,8 @@ class ManyManyActiveRecord extends CActiveRecord
             if (is_array($this->primaryKey))
                 throw new CException('ManyManyActiveRecord can\'t work  with composite primary key');	    
             //check if relation correct
-            if ($this->primaryKey < 1)
-                throw new CException($relation->name.' relation error, save model first');
+            if (is_null($this->primaryKey))
+                throw new CException($relation->name.' error, primary key is null');
 
             //check if relation correct
             if (!is_object($relation) || get_class($relation) != 'CManyManyRelation')
