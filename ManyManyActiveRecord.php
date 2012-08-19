@@ -12,7 +12,9 @@ class ManyManyActiveRecord extends CActiveRecord
             //check if relation correct
             if (is_null($this->primaryKey))
                 throw new CException($relation->name.' error, primary key is null');
-
+            //check if model have primaryKey
+            if (is_null($this->isNewRecord))
+                throw new CException($relation->name.' error, save model first');
             //check if relation correct
             if (!is_object($relation) || get_class($relation) != 'CManyManyRelation')
                 throw new CException($relation->name.' is not exist or not belongs to CManyManyRelation class');
