@@ -155,5 +155,25 @@ class ManyManyActiveRecord extends CActiveRecord
             $command = Yii::app()->db->createCommand($sql);
             $command->execute();
         }	
+        
+    /**
+    * Remove tables relation records on ManyMany relation
+    * @param string $relationName the name of the relation, needs to be updated
+    */
+        public function removeAllRelationRecords($relationName)
+        {
+            //get correct relation from model relation defenition
+            $relation = $this->getActiveRelation($relationName);
+
+            $matches = $this->verifyManyManyRelation($relation);
+
+            $table = $matches[1][0];
+            $this_key = $matches[2][0];
+
+            //execute delete relation statement
+            $sql = "delete from {$table} WHERE $this_key = '{$this->primaryKey}'";
+            $command = Yii::app()->db->createCommand($sql);
+            $command->execute();
+        }   
 }
 ?>
