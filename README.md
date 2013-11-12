@@ -51,6 +51,11 @@ or you can remove some relations
 	$model = Category::model()->findByPk(10);
 	$model->removeRelationRecords('posts',array(1,2,3));
 
+or you can remove all relation records
+
+	$model = Category::model()->findByPk(10);
+	$model->removeAllRelationRecords('posts');
+
 or if you need to save additional data in tbl_post_category (like user_id for example) you add relations with $additionalFields 
 
 	$model = Category::model()->findByPk(10);
