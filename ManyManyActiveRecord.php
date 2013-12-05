@@ -118,9 +118,9 @@ class ManyManyActiveRecord extends CActiveRecord
 		$sql = array();
 		for ($i = 0; $i<$c; $i++) {
 			if (count($additionalFields) > 0) {
-			foreach($additionalFields as $key=>$value) {
-				$values[] = $value;
-			}
+				foreach($additionalFields as $key=>$value) {
+					$values[] = $value;
+				}
 				$sql[] = '('.$this->primaryKey.', '.$relationData[$i].", '".implode("', '", $values)."')";
 			}
 			else
@@ -156,10 +156,10 @@ class ManyManyActiveRecord extends CActiveRecord
 		$command->execute();
 	}	
         
-    /**
-    * Remove tables relation records on ManyMany relation
-    * @param string $relationName the name of the relation, needs to be updated
-    */
+	/**
+	* Remove tables relation records on ManyMany relation
+	* @param string $relationName the name of the relation, needs to be updated
+	*/
 	public function removeAllRelationRecords($relationName)
 	{
 		//get correct relation from model relation defenition
