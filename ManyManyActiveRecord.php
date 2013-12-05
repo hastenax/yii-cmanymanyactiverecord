@@ -91,7 +91,7 @@ class ManyManyActiveRecord extends CActiveRecord
 	/**
 	* Create new tables relation records on ManyMany relation without deletion old ones
 	* @param string     $relationName the name of the relation, needs to be updated
-	* @param array	    $relationData array of related keys of second table to be connected with first table
+	* @param array      $relationData array of related keys of second table to be connected with first table
 	*/
 	public function addRelationRecords($relationName, $relationData, $additionalFields = array())
 	{
@@ -137,7 +137,7 @@ class ManyManyActiveRecord extends CActiveRecord
         /**
 	* Remove tables relation records on ManyMany relation
 	* @param string $relationName the name of the relation, needs to be updated
-	* @param int	$keys array of keys to remove
+	* @param int    $keys array of keys to remove
 	*/
 	public function removeRelationRecords($relationName, $keys)
 	{
