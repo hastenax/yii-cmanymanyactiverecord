@@ -3,12 +3,14 @@
 class ManyManyActiveRecord extends CActiveRecord
 {
 	/**
-	* @return array with table name and 2 keys of the related tables
-	*/
+	 * @param $relation
+	 * @return array with table name and 2 keys of the related tables
+	 * @throws CException
+	 */
 	protected function verifyManyManyRelation($relation) {
 		//check if primaryKey correct
 		if (is_array($this->primaryKey))
-			throw new CException('ManyManyActiveRecord can\'t work  with composite primary key');	    
+			throw new CException('ManyManyActiveRecord can\'t work  with composite primary key');
 		//check if relation correct
 		if (is_null($this->primaryKey))
 			throw new CException($relation->name.' error, primary key is null');
@@ -25,10 +27,13 @@ class ManyManyActiveRecord extends CActiveRecord
 	}
 
 	/**
-	* Create tables relation records on ManyMany relation with deletion old ones
-	* @param string $relationName the name of the relation, needs to be updated
-	* @param array  $relationData array of related keys of second table to be connected with first table
-	*/
+	 * Create tables relation records on ManyMany relation with deletion old ones
+	 * @param string $relationName the name of the relation, needs to be updated
+	 * @param array  $relationData array of related keys of second table to be connected with first table
+	 * @param array $additionalFields
+	 * @param bool $useTransaction
+	 * @throws CException
+	 */
 	public function setRelationRecords($relationName, $relationData, $additionalFields = array(), $useTransaction = false)
 	{
 		//get correct relation from model relation defenition
@@ -87,15 +92,16 @@ class ManyManyActiveRecord extends CActiveRecord
 			throw new CException($e->getMessage());
 		}
 	}
-	
+
 	/**
-	* Create new tables relation records on ManyMany relation without deletion old ones
-	* @param string     $relationName the name of the relation, needs to be updated
-	* @param array      $relationData array of related keys of second table to be connected with first table
-	*/
+	 * Create new tables relation records on ManyMany relation without deletion old ones
+	 * @param string $relationName the name of the relation, needs to be updated
+	 * @param $relationData array of related keys of second table to be connected with first table
+	 * @param array $additionalFields
+	 */
 	public function addRelationRecords($relationName, $relationData, $additionalFields = array())
 	{
-		//get correct relation from model relation defenition
+		//get correct relation from model relation definition
 		$relation = $this->getActiveRelation($relationName);
 
 		$matches = $this->verifyManyManyRelation($relation);
@@ -134,10 +140,10 @@ class ManyManyActiveRecord extends CActiveRecord
 		}
 	}
 
-        /**
+	/**
 	* Remove tables relation records on ManyMany relation
 	* @param string $relationName the name of the relation, needs to be updated
-	* @param int    $keys array of keys to remove
+	* @param array $keys array of keys to remove
 	*/
 	public function removeRelationRecords($relationName, $keys)
 	{
@@ -154,15 +160,15 @@ class ManyManyActiveRecord extends CActiveRecord
 		$sql = "delete from {$table} WHERE $this_key = '{$this->primaryKey}' AND $another_key IN (".implode(',', $keys).")";
 		$command = Yii::app()->db->createCommand($sql);
 		$command->execute();
-	}	
-        
+	}
+
 	/**
 	* Remove tables relation records on ManyMany relation
 	* @param string $relationName the name of the relation, needs to be updated
 	*/
 	public function removeAllRelationRecords($relationName)
 	{
-		//get correct relation from model relation defenition
+		//get correct relation from model relation definition
 		$relation = $this->getActiveRelation($relationName);
 
 		$matches = $this->verifyManyManyRelation($relation);
@@ -174,6 +180,5 @@ class ManyManyActiveRecord extends CActiveRecord
 		$sql = "delete from {$table} WHERE $this_key = '{$this->primaryKey}'";
 		$command = Yii::app()->db->createCommand($sql);
 		$command->execute();
-	}   
+	}
 }
-?>
